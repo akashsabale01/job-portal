@@ -25,6 +25,10 @@ class Job < ApplicationRecord
   before_create :generate_uuid
 
   def generate_uuid
-    self.uuid = SecureRandom.uuid
+    self.uuid ||= SecureRandom.uuid
+  end
+
+  def to_param
+    uuid
   end
 end
