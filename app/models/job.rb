@@ -7,13 +7,13 @@ class Job < ApplicationRecord
 
   has_many :applied_jobs
   belongs_to :company
-  
+
   validates :title, presence: true, uniqueness: true
   validates :description, :job_location, :job_type, 
             :applicable_for, :salary_range, :total_positions, presence: true
 
   scope :remote_jobs, -> { where(job_location: 'Remote') }
-  scope :onsight_jobs, -> { where(job_location: 'Onsight') }
+  scope :onsite_jobs, -> { where(job_location: 'Onsite') }
 
   def posted_by
     User.where(role: 'employeer').find(posted_by_id)
