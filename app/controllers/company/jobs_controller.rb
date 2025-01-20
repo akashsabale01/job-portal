@@ -19,7 +19,8 @@ class Company::JobsController < ApplicationController
   end
 
   def show
-    @job = current_company.jobs.find(params[:id])
+    @job = current_company.jobs.find_by(uuid: params[:id])
+    # @job = current_company.jobs.find(params[:id])
   end
 
   private
