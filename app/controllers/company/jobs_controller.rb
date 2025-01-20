@@ -11,11 +11,10 @@ class Company::JobsController < ApplicationController
 
   def create
     @job = current_company.jobs.new(job_params)
-    debugger
     if @job.save
       redirect_to company_jobs_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
